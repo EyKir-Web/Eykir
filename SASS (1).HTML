@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seden Adea Secondary School - Excellence in Education</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+    :root {
+      --primary: #1e40af;
+      --primary-dark: #1e3a8a;
+      --secondary: #047857;
+      --accent: #d97706;
+      --dark: #1e293b;
+      --light: #f8fafc;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      transition: all 0.3s ease;
+    }
+
+    .dark {
+      background-color: #0f172a;
+      color: #f8fafc;
+    }
+
+    .dark .bg-white {
+      background-color: #ffffff !important;
+      color: #000000 !important;
+    }
+
+    .dark .text-gray-800 {
+      color: #f8fafc !important;
+    }
+
+    .dark .bg-gray-100 {
+      background-color: #1e293b !important;
+    }
+
+    .hero-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .hero-overlay {
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .dark .hero-overlay {
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+    .news-ticker {
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+    }
+
+    .stat-card {
+      transition: all 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .department-card {
+      transition: all 0.3s ease;
+    }
+
+    .department-card:hover {
+      transform: scale(1.03);
+    }
+
+    .event-card {
+      transition: all 0.3s ease;
+    }
+
+    .event-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .teacher-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .teacher-card img {
+      transition: transform 0.3s ease;
+    }
+
+    .nav-link {
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -2px;
+      left: 0;
+      background-color: var(--primary);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .dropdown:hover .dropdown-menu {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .toggle-checkbox:checked {
+      right: 0;
+      border-color: var(--primary);
+    }
+
+    .toggle-checkbox:checked+.toggle-label {
+      background-color: var(--primary);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+    }
+
+    .animate-stat {
+      transition: all 1s ease-out;
+    }
+
+    /* Accessibility focus styles */
+    a:focus,
+    button:focus,
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+
+    /* Skip to content link for screen readers */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--primary);
+      color: white;
+      padding: 8px;
+      z-index: 100;
+    }
+
+    .skip-link:focus {
+      top: 0;
+    }
+
+    /* Language selector */
+    .language-selector {
+      transition: all 0.3s ease;
+    }
+
+    .language-selector:hover {
+      transform: scale(1.05);
+    }
+
+    /* PWA install button */
+    .pwa-install {
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.05);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .contact-dev-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 1rem 2.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+  background: rgba(0, 119, 255, 0.15);
+  border: 1px solid rgba(0, 119, 255, 0.3);
+  border-radius: 50px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 30px rgba(0, 119, 255, 0.2);
+  overflow: hidden;
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-dev-btn .icon {
+  font-size: 2.5rem;
+  transition: transform 0.4s ease-in-out;
+}
+
+.contact-dev-btn .text {
+  z-index: 2;
+  transition: color 0.3s ease;
+}
+
+.contact-dev-btn .burst {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background: radial-gradient(circle, rgba(255,255,255,0.15) 10%, transparent 11%);
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.6s ease-out;
+  pointer-events: none;
+  border-radius: 50%;
+}
+
+.contact-dev-btn:hover {
+  transform: scale(1.07);
+  box-shadow: 0 12px 40px rgba(0, 119, 255, 0.4);
+}
+
+.contact-dev-btn:hover .icon {
+  transform: translateX(5px) rotate(8deg);
+}
+
+.contact-dev-btn:hover .burst {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+
+  </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+  <!-- Skip to content link -->
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
+  <!-- Emergency Alert Bar -->
+  <!-- <div class="bg-red-600 text-white text-center py-2 px-4">
+    <p class="font-medium">Emergency Alert: School will be closed on Friday for maintenance.</p>
+  </div> -->
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 shadow-md bg-white dark:bg-gray-800 transition-colors duration-300">
+    <div class="container mx-auto px-4 py-3">
+      <div class="flex justify-between items-center">
+        <div class="flex items-center">
+          <img src="sass.jpg" alt="Seden Adea Secondary School Logo" class="h-12 w-12 mr-3">
+          <div>
+            <h1 style="font-size: small;" class="text-xl font-bold text-primary">Seden Adea</h1>
+            <p class="text-xs text-gray-600 dark:text-gray-300">Excellence Through Knowledge</p>
+          </div>
+        </div>
+
+        <div class="hidden md:flex items-center space-x-6">
+          <!-- Language Selector -->
+          <div class="language-selector relative">
+            <!-- <button class="flex items-center space-x-1 px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-700">
+              <i class="fas fa-globe text-primary"></i>
+              <span>English</span>
+              <i class="fas fa-chevron-down text-xs"></i>
+            </button> -->
+            <div class="absolute hidden mt-1 w-40 bg-white dark:bg-gray-700 rounded-md shadow-lg z-50">
+              <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600">Amharic</a>
+              <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600">Afan Oromo</a>
+            </div>
+          </div>
+
+          <!-- Dark mode toggle -->
+          <div class="flex items-center">
+            <div class="relative inline-block w-10 mr-2 align-middle select-none">
+              <input type="checkbox" id="toggle"
+                class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" />
+              <label for="toggle"
+                class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+            </div>
+            <span class="text-sm">Dark</span>
+          </div>
+
+          <nav>
+            <ul class="flex space-x-6">
+              <li><a href="#home" class="nav-link font-medium hover:text-primary">Home</a></li>
+              <li class="dropdown relative">
+                <a href="#about" class="nav-link font-medium hover:text-primary flex items-center">
+                  About <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                </a>
+                <div
+                  class="dropdown-menu absolute hidden mt-2 py-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-xl z-50">
+                  <a href="#mission" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">Mission &
+                    Vision</a>
+                  <a href="#history" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">History</a>
+                  <a href="#principal" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">Principal's
+                    Message</a>
+                  <a href="#anthem" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">School Anthem</a>
+                </div>
+              </li>
+              <li class="dropdown relative">
+                <a href="#academics" class="nav-link font-medium hover:text-primary flex items-center">
+                  Academics <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                </a>
+                <div
+                  class="dropdown-menu absolute hidden mt-2 py-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-xl z-50">
+                  <a href="#departments"
+                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">Departments</a>
+                  <a href="#curriculum" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">Curriculum</a>
+                  <a href="#teachers" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">Teachers</a>
+                  <a href="#timetable" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">Timetable</a>
+                </div>
+              </li>
+              <li><a href="#admissions" class="nav-link font-medium hover:text-primary">Admissions</a></li>
+              <li><a href="#contact" class="nav-link font-medium hover:text-primary">Contact</a></li>
+            </ul>
+          </nav>
+
+          <div class="flex items-center space-x-4">
+            <a href="#login"
+              class="px-4 py-2 rounded-md bg-primary hover:bg-primary-dark text-white font-medium transition-colors">Login</a>
+          </div>
+        </div>
+
+        <!-- Mobile menu button -->
+        <button id="mobile-menu-button" class="md:hidden focus:outline-none">
+          <i class="fas fa-bars text-2xl"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-800 px-4 py-2 shadow-lg">
+      <div class="flex justify-between items-center mb-4">
+        <div class="flex items-center space-x-2">
+          <span class="text-sm">Dark Mode</span>
+          <div class="relative inline-block w-10 align-middle select-none">
+            <input type="checkbox" id="mobile-toggle"
+              class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer" />
+            <label for="mobile-toggle"
+              class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+          </div>
+        </div>
+
+        <div class="language-selector relative">
+          <button class="flex items-center space-x-1 px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-700">
+            <i class="fas fa-globe text-primary"></i>
+            <span>English</span>
+            <i class="fas fa-chevron-down text-xs"></i>
+          </button>
+        </div>
+      </div>
+
+      <nav>
+        <ul class="space-y-2">
+          <li><a href="#home" class="block px-3 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700">Home</a></li>
+          <li>
+            <a href="#about"
+              class="block px-3 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex justify-between items-center">
+              About <i class="fas fa-chevron-down text-xs"></i>
+            </a>
+            <ul class="ml-4 mt-1 space-y-1 hidden">
+              <li><a href="#mission" class="block px-3 py-1 rounded hover:bg-gray-100 dark:hover:bg-gray-700">Mission &
+                  Vision</a></li>
+              <li><a href="#history"
+                  class="block px-3 py-1 rounded hover:bg-gray-100 dark:hover:bg-gray-700">History</a></li>
+              <li><a href="#principal"
+                  class="block px-3 py-1 rounded hover:bg-gray-100 dark:hover:bg-gray-700">Principal's Message</a></li>
+              <li><a href="#anthem" class="block px-3 py-1 rounded hover:bg-gray-100 dark:hover:bg-gray-700">School
+                  Anthem</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#academics"
+              class="block px-3 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700 flex justify-between items-center">
+              Academics <i class="fas fa-chevron-down text-xs"></i>
+            </a>
+            <ul class="ml-4 mt-1 space-y-1 hidden">
+              <li><a href="#departments"
+                  class="block px-3 py-1 rounded hover:bg-gray-100 dark:hover:bg-gray-700">Departments</a></li>
+              <li><a href="#curriculum"
+                  class="block px-3 py-1 rounded hover:bg-gray-100 dark:hover:bg-gray-700">Curriculum</a></li>
+              <li><a href="#teachers"
+                  class="block px-3 py-1 rounded hover:bg-gray-100 dark:hover:bg-gray-700">Teachers</a></li>
+              <li><a href="#timetable"
+                  class="block px-3 py-1 rounded hover:bg-gray-100 dark:hover:bg-gray-700">Timetable</a></li>
+            </ul>
+          </li>
+          <li><a href="#admissions"
+              class="block px-3 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700">Admissions</a></li>
+          <li><a href="#contact" class="block px-3 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700">Contact</a>
+          </li>
+          <li><a href="#login"
+              class="block px-3 py-2 rounded bg-primary hover:bg-primary-dark text-white text-center">Login</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- Hero Section -->
+    <section id="home"
+      class="relative h-screen flex items-center justify-center text-center text-white overflow-hidden">
+      <video autoplay muted loop class="hero-video">
+        <source
+          src="https://assets.mixkit.co/videos/preview/mixkit-students-walking-in-university-campus-17745-large.mp4"
+          type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="hero-overlay absolute inset-0"></div>
+
+      <div class="container mx-auto px-4 z-10">
+        <div class="max-w-4xl mx-auto">
+          <img src="sass.jpg" alt="School Logo" class="h-24 w-24 mx-auto mb-6">
+          <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-pulse">Seden Adea Secondary School</h1>
+          <p class="text-xl md:text-2xl mb-8">Excellence Through Knowledge</p>
+
+          <div class="flex flex-col md:flex-row justify-center gap-4">
+            <a href="#admissions"
+              class="px-8 py-3 bg-primary hover:bg-primary-dark rounded-md text-white font-bold transition-all transform hover:scale-105">
+              Apply Now
+            </a>
+            <a href="#virtual-tour"
+              class="px-8 py-3 bg-transparent border-2 border-white hover:bg-white hover:text-gray-900 rounded-md font-bold transition-all transform hover:scale-105">
+              Explore Campus
+            </a>
+            <a href="#login"
+              class="px-8 py-3 bg-secondary hover:bg-green-700 rounded-md text-white font-bold transition-all transform hover:scale-105">
+              Login
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- News Ticker -->
+      <div class="absolute bottom-0 left-0 right-0 bg-primary text-white py-2">
+        <div class="container mx-auto px-4">
+          <div class="flex items-center">
+            <span class="font-bold mr-4 whitespace-nowrap">Latest News:</span>
+            <div class="overflow-hidden">
+              <div class="whitespace-nowrap animate-marquee">
+                <span class="mx-4">Registration for new students is now open</span>
+                <span class="mx-4">Annual science fair scheduled for June 15th</span>
+                <span class="mx-4">School football team wins regional championship</span>
+                <span class="mx-4">Parent-teacher meetings next week</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="py-16 bg-white dark:bg-gray-800">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div class="stat-card bg-gray-50 dark:bg-gray-700 p-6 rounded-lg text-center shadow-sm">
+            <div class="text-4xl font-bold text-primary mb-2 animate-stat" data-target="1200">3000+</div>
+            <p class="text-gray-600 dark:text-gray-300">Students</p>
+          </div>
+          <div class="stat-card bg-gray-50 dark:bg-gray-700 p-6 rounded-lg text-center shadow-sm">
+            <div class="text-4xl font-bold text-primary mb-2 animate-stat" data-target="85">50+</div>
+            <p class="text-gray-600 dark:text-gray-300">Teachers</p>
+          </div>
+          <div class="stat-card bg-gray-50 dark:bg-gray-700 p-6 rounded-lg text-center shadow-sm">
+            <div class="text-4xl font-bold text-primary mb-2 animate-stat" data-target="25">50+</div>
+            <p class="text-gray-600 dark:text-gray-300">Years of Excellence</p>
+          </div>
+          <div class="stat-card bg-gray-50 dark:bg-gray-700 p-6 rounded-lg text-center shadow-sm">
+            <div class="text-4xl font-bold text-primary mb-2 animate-stat" data-target="98">4.5/5</div>
+            <p class="text-gray-600 dark:text-gray-300">Pass Rate</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-16 bg-gray-50 dark:bg-gray-900">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-12 text-center">About Our School</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div>
+            <h3 id="history" class="text-2xl font-semibold mb-4">Our History</h3>
+            <p class="mb-6">Founded in 1998, Seden Adea Secondary School has grown from a small community school to one
+              of the region's most respected educational institutions. Our commitment to academic excellence and
+              character development has remained unchanged throughout our journey.</p>
+
+            <h3 id="mission" class="text-2xl font-semibold mb-4">Mission & Vision</h3>
+            <p class="mb-4"><strong>Mission:</strong> To provide quality education that empowers students to achieve
+              their full potential and become responsible citizens.</p>
+            <p><strong>Vision:</strong> To be a center of excellence in education, recognized for developing innovative
+              leaders and lifelong learners.</p>
+          </div>
+
+          <div>
+            <h3 id="principal" class="text-2xl font-semibold mb-4">Principal's Message</h3>
+            <div class="flex flex-col md:flex-row items-start mb-6">
+              <img
+                src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                alt="Principal" class="w-32 h-32 rounded-full object-cover mb-4 md:mb-0 md:mr-6">
+              <div>
+                <p class="mb-4">"At Seden Adea, we believe every student has unique talents waiting to be discovered.
+                  Our dedicated staff works tirelessly to create an environment where students can thrive academically,
+                  socially, and emotionally."</p>
+                <p class="font-bold">Mr. Abebe Kebede</p>
+                <p class="text-gray-600 dark:text-gray-300">Principal</p>
+              </div>
+            </div>
+
+            <h3 id="anthem" class="text-2xl font-semibold mb-4">School Anthem</h3>
+            <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-sm">
+              <audio controls class="w-full">
+                <source src="school-anthem.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+              </audio>
+              <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">Click play to listen to our school anthem</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Academics Section -->
+    <section id="academics" class="py-16 bg-white dark:bg-gray-800">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-12 text-center">Our Academic Programs</h2>
+
+        <div class="mb-12">
+          <h3 id="departments" class="text-2xl font-semibold mb-6">Departments</h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="department-card bg-gray-50 dark:bg-gray-700 rounded-lg overflow-hidden shadow-sm">
+              <img
+                src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                alt="Science Department" class="w-full h-48 object-cover">
+              <div class="p-6">
+                <h4 class="text-xl font-bold mb-2">Science Department</h4>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">Offering Biology, Chemistry, Physics and Mathematics
+                  with state-of-the-art laboratories.</p>
+                <a href="#science" class="text-primary font-medium hover:underline">Learn More →</a>
+              </div>
+            </div>
+
+            <div class="department-card bg-gray-50 dark:bg-gray-700 rounded-lg overflow-hidden shadow-sm">
+              <img
+                src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1473&q=80"
+                alt="Arts Department" class="w-full h-48 object-cover">
+              <div class="p-6">
+                <h4 class="text-xl font-bold mb-2">Arts Department</h4>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">Specializing in History, Geography, Economics and
+                  Business Studies with expert faculty.</p>
+                <a href="#arts" class="text-primary font-medium hover:underline">Learn More →</a>
+              </div>
+            </div>
+
+            <div class="department-card bg-gray-50 dark:bg-gray-700 rounded-lg overflow-hidden shadow-sm">
+              <img
+                src="img/d4.jpg"
+                alt="IT Department" class="w-full h-48 object-cover">
+              <div class="p-6">
+                <h4 class="text-xl font-bold mb-2">IT Department</h4>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">Modern computer labs and courses in programming,
+                  networking and digital literacy.</p>
+                <a href="#it" class="text-primary font-medium hover:underline">Learn More →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-12">
+          <h3 id="curriculum" class="text-2xl font-semibold mb-6">Curriculum Overview</h3>
+          <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-sm">
+            <div class="overflow-x-auto">
+              <table class="w-full">
+                <thead>
+                  <tr class="border-b border-gray-200 dark:border-gray-600">
+                    <th class="text-left py-3 px-4">Grade</th>
+                    <th class="text-left py-3 px-4">Core Subjects</th>
+                    <th class="text-left py-3 px-4">Electives</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-b border-gray-200 dark:border-gray-600">
+                    <td class="py-3 px-4">9</td>
+                    <td class="py-3 px-4">English, Math, Biology, Chemistry, Physics, History, Geography</td>
+                    <td class="py-3 px-4">ICT, Art, Music</td>
+                  </tr>
+                  <tr class="border-b border-gray-200 dark:border-gray-600">
+                    <td class="py-3 px-4">10</td>
+                    <td class="py-3 px-4">English, Math, Biology, Chemistry, Physics, History, Geography</td>
+                    <td class="py-3 px-4">ICT, Business Studies, Economics</td>
+                  </tr>
+                  <tr>
+                    <td class="py-3 px-4">11-12</td>
+                    <td class="py-3 px-4">English, Math (Science) / History (Arts)</td>
+                    <td class="py-3 px-4">Specialized subjects based on stream</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="mt-4">
+              <a href="#full-curriculum" class="text-primary font-medium hover:underline inline-flex items-center">
+                View Full Curriculum <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 id="teachers" class="text-2xl font-semibold mb-6">Our Teachers</h3>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div class="teacher-card bg-gray-50 dark:bg-gray-700 p-4 rounded-lg shadow-sm text-center">
+              <div class="overflow-hidden rounded-full w-24 h-24 mx-auto mb-4">
+                <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Teacher"
+                  class="w-full h-full object-cover">
+              </div>
+              <h4 class="font-bold">Ms. Alemitu Bekele</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-300 mb-2">Mathematics</p>
+              <p class="text-xs text-gray-500 dark:text-gray-400">BSc in Mathematics, 45 years experience</p>
+            </div>
+
+            <div class="teacher-card bg-gray-50 dark:bg-gray-700 p-4 rounded-lg shadow-sm text-center">
+              <div class="overflow-hidden rounded-full w-24 h-24 mx-auto mb-4">
+                <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Teacher"
+                  class="w-full h-full object-cover">
+              </div>
+              <h4 class="font-bold">Mr. Dawit Girma</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-300 mb-2">Physics</p>
+              <p class="text-xs text-gray-500 dark:text-gray-400">MSc in Physics, 10 years experience</p>
+            </div>
+
+            <div class="teacher-card bg-gray-50 dark:bg-gray-700 p-4 rounded-lg shadow-sm text-center">
+              <div class="overflow-hidden rounded-full w-24 h-24 mx-auto mb-4">
+                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Teacher"
+                  class="w-full h-full object-cover">
+              </div>
+              <h4 class="font-bold">Ms. Selamawit Abebe</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-300 mb-2">English</p>
+              <p class="text-xs text-gray-500 dark:text-gray-400">MA in English Literature, 32 years experience</p>
+            </div>
+
+            <div class="teacher-card bg-gray-50 dark:bg-gray-700 p-4 rounded-lg shadow-sm text-center">
+              <div class="overflow-hidden rounded-full w-24 h-24 mx-auto mb-4">
+                <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Teacher"
+                  class="w-full h-full object-cover">
+              </div>
+              <h4 class="font-bold">Mr. Yonas Tesfaye</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-300 mb-2">History</p>
+              <p class="text-xs text-gray-500 dark:text-gray-400">PhD in African History, 20 years experience</p>
+            </div>
+          </div>
+          <div class="mt-6 text-center">
+            <a href="#all-teachers" class="text-primary font-medium hover:underline inline-flex items-center">
+              View All Teachers <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="mt-12">
+          <h3 id="timetable" class="text-2xl font-semibold mb-6">Class Timetable</h3>
+          <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-sm">
+            <div class="flex justify-between items-center mb-4">
+              <h4 class="font-bold">Grade 10 Weekly Schedule</h4>
+              <a href="#download-timetable" class="text-primary font-medium hover:underline inline-flex items-center">
+                <i class="fas fa-download mr-2"></i> Download
+              </a>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="w-full">
+                <thead>
+                  <tr class="border-b border-gray-200 dark:border-gray-600">
+                    <th class="text-left py-3 px-4">Time</th>
+                    <th class="text-left py-3 px-4">Monday</th>
+                    <th class="text-left py-3 px-4">Tuesday</th>
+                    <th class="text-left py-3 px-4">Wednesday</th>
+                    <th class="text-left py-3 px-4">Thursday</th>
+                    <th class="text-left py-3 px-4">Friday</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-b border-gray-200 dark:border-gray-600">
+                    <td class="py-3 px-4">8:00-9:00</td>
+                    <td class="py-3 px-4">Math</td>
+                    <td class="py-3 px-4">English</td>
+                    <td class="py-3 px-4">Physics</td>
+                    <td class="py-3 px-4">Chemistry</td>
+                    <td class="py-3 px-4">Biology</td>
+                  </tr>
+                  <tr class="border-b border-gray-200 dark:border-gray-600">
+                    <td class="py-3 px-4">9:00-10:00</td>
+                    <td class="py-3 px-4">English</td>
+                    <td class="py-3 px-4">Math</td>
+                    <td class="py-3 px-4">Chemistry</td>
+                    <td class="py-3 px-4">Physics</td>
+                    <td class="py-3 px-4">History</td>
+                  </tr>
+                  <tr>
+                    <td class="py-3 px-4">10:00-10:30</td>
+                    <td class="py-3 px-4" colspan="5" class="text-center">Break</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Calendar & Events Section -->
+    <section class="py-16 bg-gray-50 dark:bg-gray-900">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-12 text-center">Calendar & Events</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div>
+            <h3 class="text-2xl font-semibold mb-6">Academic Calendar</h3>
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm">
+              <div id="calendar" class="min-h-[400px]">
+                <!-- Calendar would be implemented with a JavaScript library in a real implementation -->
+                <div class="text-center py-8">
+                  <p class="text-lg mb-4">Interactive calendar would display here</p>
+                  <a href="#full-calendar"
+                    class="px-4 py-2 bg-primary hover:bg-primary-dark text-white rounded-md inline-flex items-center">
+                    View Full Calendar <i class="fas fa-arrow-right ml-2"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-2xl font-semibold mb-6">Upcoming Events</h3>
+
+            <div class="space-y-4">
+              <div class="event-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm">
+                <div class="flex">
+                  <div class="mr-4 text-center">
+                    <div class="bg-primary text-white px-3 py-1 rounded-t-lg">
+                      <span class="font-bold block">JUN</span>
+                    </div>
+                    <div class="border border-gray-200 dark:border-gray-700 px-3 py-1 rounded-b-lg">
+                      <span class="font-bold text-gray-800 dark:text-gray-200 block">15</span>
+                    </div>
+                  </div>
+                  <div>
+                    <h4 class="font-bold mb-1">Annual Science Fair</h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-2">9:00 AM - 3:00 PM | School Science Lab</p>
+                    <p class="mb-2">Students will showcase their innovative projects in this year's science fair
+                      competition.</p>
+                    <a href="#science-fair"
+                      class="text-sm text-primary font-medium hover:underline inline-flex items-center">
+                      Details & RSVP <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="event-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm">
+                <div class="flex">
+                  <div class="mr-4 text-center">
+                    <div class="bg-primary text-white px-3 py-1 rounded-t-lg">
+                      <span class="font-bold block">JUN</span>
+                    </div>
+                    <div class="border border-gray-200 dark:border-gray-700 px-3 py-1 rounded-b-lg">
+                      <span class="font-bold text-gray-800 dark:text-gray-200 block">25</span>
+                    </div>
+                  </div>
+                  <div>
+                    <h4 class="font-bold mb-1">Graduation Ceremony</h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-2">10:00 AM - 12:00 PM | School Auditorium</p>
+                    <p class="mb-2">Celebrating the achievements of our Grade 12 graduating class.</p>
+                    <a href="#graduation"
+                      class="text-sm text-primary font-medium hover:underline inline-flex items-center">
+                      Details <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="event-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm">
+                <div class="flex">
+                  <div class="mr-4 text-center">
+                    <div class="bg-primary text-white px-3 py-1 rounded-t-lg">
+                      <span class="font-bold block">JUL</span>
+                    </div>
+                    <div class="border border-gray-200 dark:border-gray-700 px-3 py-1 rounded-b-lg">
+                      <span class="font-bold text-gray-800 dark:text-gray-200 block">5</span>
+                    </div>
+                  </div>
+                  <div>
+                    <h4 class="font-bold mb-1">Parent-Teacher Conference</h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-2">8:00 AM - 5:00 PM | Classrooms</p>
+                    <p class="mb-2">Opportunity for parents to meet with teachers and discuss student progress.</p>
+                    <a href="#pt-conference"
+                      class="text-sm text-primary font-medium hover:underline inline-flex items-center">
+                      Schedule Appointment <i class="fas fa-arrow-right ml-1"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-6 text-right">
+              <a href="#all-events" class="text-primary font-medium hover:underline inline-flex items-center">
+                View All Events <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-12">
+          <h3 class="text-2xl font-semibold mb-6">Past Event Gallery</h3>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <a href="#gallery1" class="group">
+              <div class="relative overflow-hidden rounded-lg h-48">
+                <img
+                  src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                  alt="Sports Day"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                <div
+                  class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <span class="text-white font-medium">Sports Day 2023</span>
+                </div>
+              </div>
+            </a>
+            <a href="#gallery2" class="group">
+              <div class="relative overflow-hidden rounded-lg h-48">
+                <img
+                  src="https://images.unsplash.com/photo-1541178735493-479c1a27ed24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80"
+                  alt="Cultural Day"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                <div
+                  class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <span class="text-white font-medium">Cultural Day</span>
+                </div>
+              </div>
+            </a>
+            <a href="#gallery3" class="group">
+              <div class="relative overflow-hidden rounded-lg h-48">
+                <img
+                  src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80"
+                  alt="Science Fair"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                <div
+                  class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <span class="text-white font-medium">Science Fair</span>
+                </div>
+              </div>
+            </a>
+            <a href="#gallery4" class="group">
+              <div class="relative overflow-hidden rounded-lg h-48">
+                <img
+                  src="https://images.unsplash.com/photo-1542621334-a254cf47733d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                  alt="Graduation"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                <div
+                  class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <span class="text-white font-medium">Graduation 2023</span>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="mt-6 text-right">
+            <a href="#full-gallery" class="text-primary font-medium hover:underline inline-flex items-center">
+              View Full Gallery <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Admissions Section -->
+    <section id="admissions" class="py-16 bg-white dark:bg-gray-800">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-12 text-center">Admissions</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div>
+            <h3 class="text-2xl font-semibold mb-6">Requirements</h3>
+            <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-sm">
+              <h4 class="font-bold mb-4">For Grade 9 Entry:</h4>
+              <ul class="space-y-2 mb-6">
+                <li class="flex items-start">
+                  <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                  <span>Completion of Grade 8 with minimum 2.5 GPA</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                  <span>Passing score on entrance examination</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                  <span>Completed application form</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                  <span>Birth certificate and previous school records</span>
+                </li>
+              </ul>
+
+              <h4 class="font-bold mb-4">For Transfer Students:</h4>
+              <ul class="space-y-2">
+                <li class="flex items-start">
+                  <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                  <span>Official transcript from previous school</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                  <span>Letter of recommendation</span>
+                </li>
+                <li class="flex items-start">
+                  <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                  <span>Interview with admissions committee</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="mt-6">
+              <h3 class="text-2xl font-semibold mb-6">Important Dates</h3>
+              <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-sm">
+                <div class="space-y-4">
+                  <div class="flex justify-between border-b border-gray-200 dark:border-gray-600 pb-2">
+                    <span>Application Opens</span>
+                    <span class="font-medium">January 5, 2024</span>
+                  </div>
+                  <div class="flex justify-between border-b border-gray-200 dark:border-gray-600 pb-2">
+                    <span>Entrance Exam</span>
+                    <span class="font-medium">March 15, 2024</span>
+                  </div>
+                  <div class="flex justify-between border-b border-gray-200 dark:border-gray-600 pb-2">
+                    <span>Admission Decisions</span>
+                    <span class="font-medium">April 30, 2024</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span>School Year Begins</span>
+                    <span class="font-medium">September 1, 2024</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-2xl font-semibold mb-6">Online Registration</h3>
+            <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-sm">
+              <form class="space-y-4">
+                <div>
+                  <label for="student-name"
+                    class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Student Name</label>
+                  <input type="text" id="student-name"
+                    class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-primary focus:border-primary dark:bg-gray-800">
+                </div>
+
+                <div>
+                  <label for="parent-name"
+                    class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Parent/Guardian Name</label>
+                  <input type="text" id="parent-name"
+                    class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-primary focus:border-primary dark:bg-gray-800">
+                </div>
+
+                <div>
+                  <label for="email"
+                    class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
+                  <input type="email" id="email"
+                    class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-primary focus:border-primary dark:bg-gray-800">
+                </div>
+
+                <div>
+                  <label for="phone"
+                    class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Phone</label>
+                  <input type="tel" id="phone"
+                    class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-primary focus:border-primary dark:bg-gray-800">
+                </div>
+
+                <div>
+                  <label for="grade" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Grade
+                    Applying For</label>
+                  <select id="grade"
+                    class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-primary focus:border-primary dark:bg-gray-800">
+                    <option>Grade 9</option>
+                    <option>Grade 10</option>
+                    <option>Grade 11</option>
+                    <option>Grade 12</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label for="documents" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Upload
+                    Documents</label>
+                  <input type="file" id="documents"
+                    class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-primary focus:border-primary dark:bg-gray-800">
+                  <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Upload birth certificate, previous school
+                    records, and any other required documents</p>
+                </div>
+
+                <div class="flex items-center">
+                  <input id="agree-terms" type="checkbox"
+                    class="h-4 w-4 text-primary focus:ring-primary border-gray-300 dark:border-gray-600 rounded">
+                  <label for="agree-terms" class="ml-2 block text-sm text-gray-700 dark:text-gray-300">
+                    I agree to the <a href="#terms" class="text-primary hover:underline">terms and conditions</a>
+                  </label>
+                </div>
+
+                <button type="submit"
+                  class="w-full bg-primary hover:bg-primary-dark text-white font-medium py-2 px-4 rounded-md transition-colors">
+                  Submit Application
+                </button>
+              </form>
+            </div>
+
+            <div class="mt-6">
+              <h3 class="text-2xl font-semibold mb-6">Download Forms</h3>
+              <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-sm">
+                <div class="space-y-3">
+                  <a href="#download1"
+                    class="flex items-center justify-between p-3 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-md transition-colors">
+                    <span>Application Form</span>
+                    <i class="fas fa-download text-primary"></i>
+                  </a>
+                  <a href="#download2"
+                    class="flex items-center justify-between p-3 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-md transition-colors">
+                    <span>Health Information Form</span>
+                    <i class="fas fa-download text-primary"></i>
+                  </a>
+                  <a href="#download3"
+                    class="flex items-center justify-between p-3 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-md transition-colors">
+                    <span>Transportation Request Form</span>
+                    <i class="fas fa-download text-primary"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-12">
+          <h3 class="text-2xl font-semibold mb-6">Frequently Asked Questions</h3>
+          <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-sm">
+            <div class="space-y-4">
+              <div class="border-b border-gray-200 dark:border-gray-600 pb-4">
+                <button class="faq-question flex justify-between items-center w-full text-left font-medium">
+                  <span>What is the application deadline?</span>
+                  <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
+                </button>
+                <div class="faq-answer mt-2 hidden">
+                  <p class="text-gray-600 dark:text-gray-300">The application deadline for the 2024-2025 academic year
+                    is March 1, 2024. Late applications may be considered if spaces remain available.</p>
+                </div>
+              </div>
+
+              <div class="border-b border-gray-200 dark:border-gray-600 pb-4">
+                <button class="faq-question flex justify-between items-center w-full text-left font-medium">
+                  <span>Is there financial aid available?</span>
+                  <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
+                </button>
+                <div class="faq-answer mt-2 hidden">
+                  <p class="text-gray-600 dark:text-gray-300">Yes, we offer need-based financial aid to qualified
+                    students. Applications for financial aid must be submitted by February 15, 2024.</p>
+                </div>
+              </div>
+
+              <div class="border-b border-gray-200 dark:border-gray-600 pb-4">
+                <button class="faq-question flex justify-between items-center w-full text-left font-medium">
+                  <span>What is the student-teacher ratio?</span>
+                  <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
+                </button>
+                <div class="faq-answer mt-2 hidden">
+                  <p class="text-gray-600 dark:text-gray-300">Our average student-teacher ratio is 20:1, ensuring
+                    personalized attention for each student.</p>
+                </div>
+              </div>
+
+              <div>
+                <button class="faq-question flex justify-between items-center w-full text-left font-medium">
+                  <span>Can international students apply?</span>
+                  <i class="fas fa-chevron-down text-primary transition-transform duration-300"></i>
+                </button>
+                <div class="faq-answer mt-2 hidden">
+                  <p class="text-gray-600 dark:text-gray-300">Yes, we welcome applications from international students.
+                    Additional documentation may be required, including proof of English proficiency for non-native
+                    speakers.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 text-center">
+          <h3 class="text-xl font-semibold mb-4">Admissions Office Contact</h3>
+          <p class="mb-2"><i class="fas fa-phone-alt text-primary mr-2"></i> +251 123 456 789</p>
+          <p class="mb-4"><i class="fas fa-envelope text-primary mr-2"></i> admissions@sedenadea.edu.et</p>
+          <p>Office Hours: Monday-Friday, 8:00 AM - 4:30 PM</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Student Life Section -->
+    <section class="py-16 bg-gray-50 dark:bg-gray-900">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-12 text-center">Student Life</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+          <div>
+            <h3 class="text-2xl font-semibold mb-6">Clubs & Organizations</h3>
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm">
+              <div class="grid grid-cols-2 gap-4">
+                <div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+                  <div class="text-primary text-2xl mb-2">
+                    <i class="fas fa-flask"></i>
+                  </div>
+                  <h4 class="font-bold mb-1">Science Club</h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-300">Wednesdays 3:00 PM</p>
+                </div>
+                <div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+                  <div class="text-primary text-2xl mb-2">
+                    <i class="fas fa-paint-brush"></i>
+                  </div>
+                  <h4 class="font-bold mb-1">Art Club</h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-300">Tuesdays 3:00 PM</p>
+                </div>
+                <div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+                  <div class="text-primary text-2xl mb-2">
+                    <i class="fas fa-music"></i>
+                  </div>
+                  <h4 class="font-bold mb-1">Music Club</h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-300">Mondays 3:00 PM</p>
+                </div>
+                <div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+                  <div class="text-primary text-2xl mb-2">
+                    <i class="fas fa-futbol"></i>
+                  </div>
+                  <h4 class="font-bold mb-1">Sports Club</h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-300">Daily after school</p>
+                </div>
+              </div>
+              <div class="mt-4">
+                <a href="#all-clubs" class="text-primary font-medium hover:underline inline-flex items-center">
+                  View All Clubs <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-2xl font-semibold mb-6">Sports & Extracurriculars</h3>
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm">
+              <div class="grid grid-cols-2 gap-4">
+                <div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+                  <div class="text-primary text-2xl mb-2">
+                    <i class="fas fa-running"></i>
+                  </div>
+                  <h4 class="font-bold mb-1">Athletics</h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-300">Track, field, cross country</p>
+                </div>
+                <div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+                  <div class="text-primary text-2xl mb-2">
+                    <i class="fas fa-futbol"></i>
+                  </div>
+                  <h4 class="font-bold mb-1">Football</h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-300">Boys and girls teams</p>
+                </div>
+                <div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+                  <div class="text-primary text-2xl mb-2">
+                    <i class="fas fa-basketball-ball"></i>
+                  </div>
+                  <h4 class="font-bold mb-1">Basketball</h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-300">Competitive teams</p>
+                </div>
+                <div class="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+                  <div class="text-primary text-2xl mb-2">
+                    <i class="fas fa-chess"></i>
+                  </div>
+                  <h4 class="font-bold mb-1">Chess Club</h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-300">National champions</p>
+                </div>
+              </div>
+              <div class="mt-4">
+                <a href="#all-sports" class="text-primary font-medium hover:underline inline-flex items-center">
+                  View All Activities <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-12">
+          <h3 class="text-2xl font-semibold mb-6">Student Spotlight</h3>
+          <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div class="text-center">
+                <div class="overflow-hidden rounded-full w-32 h-32 mx-auto mb-4">
+                  <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Student"
+                    class="w-full h-full object-cover">
+                </div>
+                <h4 class="font-bold">Amina Mohammed</h4>
+                <p class="text-sm text-gray-600 dark:text-gray-300 mb-2">Grade 11 Science</p>
+                <p class="text-sm">National Science Olympiad Gold Medalist</p>
+              </div>
+              <div class="text-center">
+                <div class="overflow-hidden rounded-full w-32 h-32 mx-auto mb-4">
+                  <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Student"
+                    class="w-full h-full object-cover">
+                </div>
+                <h4 class="font-bold">Daniel Getachew</h4>
+                <p class="text-sm text-gray-600 dark:text-gray-300 mb-2">Grade 12 Arts</p>
+                <p class="text-sm">Published poet and debate team captain</p>
+              </div>
+              <div class="text-center">
+                <div class="overflow-hidden rounded-full w-32 h-32 mx-auto mb-4">
+                  <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Student"
+                    class="w-full h-full object-cover">
+                </div>
+                <h4 class="font-bold">Eden Teshome</h4>
+                <p class="text-sm text-gray-600 dark:text-gray-300 mb-2">Grade 10</p>
+                <p class="text-sm">Regional football tournament MVP</p>
+              </div>
+            </div>
+            <div class="mt-6 text-center">
+              <a href="#all-spotlights" class="text-primary font-medium hover:underline inline-flex items-center">
+                View More Student Achievements <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-2xl font-semibold mb-6">School Policies</h3>
+          <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <h4 class="font-bold mb-3">Uniform Code</h4>
+                <ul class="space-y-2">
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                    <span>White shirt with school logo</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                    <span>Navy blue pants/skirt</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                    <span>Black shoes (no sneakers)</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                    <span>Neat and tidy appearance</span>
+                  </li>
+                </ul>
+                <div class="mt-4">
+                  <a href="#uniform-policy" class="text-primary font-medium hover:underline inline-flex items-center">
+                    Full Uniform Policy <i class="fas fa-arrow-right ml-2"></i>
+                  </a>
+                </div>
+              </div>
+              <div>
+                <h4 class="font-bold mb-3">Discipline Policy</h4>
+                <ul class="space-y-2">
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                    <span>Respect for all members of school community</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                    <span>Punctual attendance to all classes</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                    <span>No use of mobile phones during class</span>
+                  </li>
+                  <li class="flex items-start">
+                    <i class="fas fa-check text-primary mr-2 mt-1"></i>
+                    <span>Academic honesty policy</span>
+                  </li>
+                </ul>
+                <div class="mt-4">
+                  <a href="#discipline-policy"
+                    class="text-primary font-medium hover:underline inline-flex items-center">
+                    Full Discipline Policy <i class="fas fa-arrow-right ml-2"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <a href="dev.html" class="contact-dev-btn">
+      <span class="icon">&#128187;</span>
+      <span class="text">Contact Developers</span>
+      <span class="burst"></span>
+    </a>
+
+
+    <!-- Projects & Innovations Section -->
+    <section class="py-16 bg-white dark:bg-gray-800">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-12 text-center">Projects & Innovations</h2>
+
+        <div class="mb-12">
+          <h3 class="text-2xl font-semibold mb-6">STEM Projects</h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-sm">
+              <img
+                src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                alt="Solar Project" class="w-full h-48 object-cover rounded-md mb-4">
+              <h4 class="font-bold mb-2">Solar-Powered Irrigation System</h4>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">Grade 11 students developed an automated irrigation
+                system powered by solar energy for local farmers.</p>
+              <a href="#solar-project" class="text-primary font-medium hover:underline inline-flex items-center">
+                Learn More <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+            </div>
+            <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-sm">
+              <img
+                src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                alt="Robotics" class="w-full h-48 object-cover rounded-md mb-4">
+              <h4 class="font-bold mb-2">Robotics Team</h4>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">Our robotics team won regional competition with their
+                waste-sorting robot prototype.</p>
+              <a href="#robotics" class="text-primary font-medium hover:underline inline-flex items-center">
+                Learn More <i class="fas fa-arrow-right ml-2"></i>
+              </a>
+            </div>
+            <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-sm">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?
+</html>
